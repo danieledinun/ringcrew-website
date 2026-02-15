@@ -2,7 +2,7 @@ import { Metadata } from 'next';
 import { industries } from '@/lib/industries';
 import IndustryPageTemplate from '@/components/sections/IndustryPageTemplate';
 
-const industry = industries.find(i => i.slug === 'hvac')!;
+const industry = industries.find(i => i.slug === 'auto-repair')!;
 
 export const metadata: Metadata = {
   title: industry.metaTitle,
@@ -19,6 +19,6 @@ export const metadata: Metadata = {
   },
 };
 
-export default function HVACPage() {
+export default function AutoRepairPage() {
   return <IndustryPageTemplate industry={industry} />;
 }
