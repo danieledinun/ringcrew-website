@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image';
 import { BUSINESS_INFO } from '@/lib/constants';
 
 export default function Footer() {
@@ -8,11 +9,14 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           {/* Brand */}
           <div className="col-span-1">
-            <div className="flex items-center space-x-2 mb-4">
-              <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
-                <span className="text-white font-bold text-xl">R</span>
-              </div>
-              <span className="font-heading font-bold text-xl">RingCrew</span>
+            <div className="mb-4">
+              <Image
+                src="/logo-dark.svg"
+                alt="RingCrew"
+                width={160}
+                height={32}
+                className="h-8 w-auto"
+              />
             </div>
             <p className="text-gray-400 text-sm">
               Never miss another customer call. AI receptionist for local businesses.

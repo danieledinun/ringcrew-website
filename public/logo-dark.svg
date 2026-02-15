@@ -1,0 +1,6 @@
+<svg width="280" height="48" viewBox="0 0 280 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M8 32c0-12 9.5-21.5 21.5-21.5" stroke="#22c55e" stroke-width="3" stroke-linecap="round" fill="none"/>
+  <path d="M8 32c0-1.1.9-2 2-2h1.5c.8 0 1.5.3 2 .8l.8.8c.5 1 1.2 1.8 2 2.5l.8-.8c.3-.3.8-.5 1.2-.5H20c1.1 0 2 .9 2 2v1.5c0 1.1-.9 2-2 2h-.5C12 38.3 8 35 8 32z" fill="#22c55e"/>
+  <text x="40" y="34" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="27" fill="#f1f5f9" letter-spacing="-0.5">ringcrew</text>
+  <text x="206" y="34" font-family="'DM Sans', sans-serif" font-weight="500" font-size="27" fill="#475569" letter-spacing="-0.5">.ai</text>
+</svg>
