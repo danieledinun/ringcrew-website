@@ -8,33 +8,52 @@ export async function POST(request: Request) {
     // Initialize Resend only when needed
     const resend = new Resend(process.env.RESEND_API_KEY || '');
 
-    // Email to business owner with form data
+    // Email to admin (Daniele) with complete form data
     await resend.emails.send({
       from: 'RingCrew <onboarding@resend.dev>',
-      to: process.env.ADMIN_EMAIL || 'hello@ringcrew.ai',
-      replyTo: 'hello@ringcrew.ai',
+      to: 'danieledinunziosf@gmail.com',
+      replyTo: data.email,
       subject: `🚀 New Signup: ${data.businessName} (${data.industry})`,
       html: `
-        <h2>New RingCrew Signup</h2>
-        <p><strong>Business:</strong> ${data.businessName}</p>
-        <p><strong>Contact:</strong> ${data.contactName} — ${data.email} — ${data.phone}</p>
+        <h2>New RingCrew Signup - Action Required</h2>
+        <p>A new customer has signed up and is ready for onboarding!</p>
+
+        <h3>📋 Business Information</h3>
+        <p><strong>Business Name:</strong> ${data.businessName}</p>
+        <p><strong>Contact Person:</strong> ${data.contactName}</p>
+        <p><strong>Email:</strong> <a href="mailto:${data.email}">${data.email}</a></p>
+        <p><strong>Phone:</strong> <a href="tel:${data.phone}">${data.phone}</a></p>
         <p><strong>Industry:</strong> ${data.industry}</p>
         <p><strong>Website:</strong> ${data.website || 'N/A'}</p>
-        <hr>
-        <p><strong>Services:</strong> ${data.services}</p>
-        <p><strong>Service Area:</strong> ${data.serviceArea || 'N/A'}</p>
-        <p><strong>Emergency:</strong> ${data.hasEmergency === 'yes' ? data.emergencyExamples : 'No'}</p>
-        <hr>
-        <p><strong>Common Questions:</strong> ${data.commonQuestions}</p>
+
+        <h3>🛠️ Services & Coverage</h3>
+        <p><strong>Services Offered:</strong><br>${data.services}</p>
+        <p><strong>Service Area:</strong> ${data.serviceArea || 'Not specified'}</p>
+        <p><strong>Emergency Services:</strong> ${data.hasEmergency === 'yes' ? 'Yes' : 'No'}</p>
+        ${data.hasEmergency === 'yes' ? `<p><strong>Emergency Examples:</strong><br>${data.emergencyExamples}</p>` : ''}
+
+        <h3>💬 Customer Questions & Pricing</h3>
+        <p><strong>Common Customer Questions:</strong><br>${data.commonQuestions}</p>
         <p><strong>Pricing Approach:</strong> ${data.pricingApproach}</p>
-        <p><strong>Price Ranges:</strong> ${data.priceRanges || 'N/A'}</p>
-        <hr>
-        <p><strong>Booking Tools:</strong> ${data.bookingTools?.join(', ')}</p>
+        ${data.priceRanges ? `<p><strong>Price Ranges:</strong><br>${data.priceRanges}</p>` : ''}
+
+        <h3>📅 Booking Setup</h3>
+        <p><strong>Current Booking Tools:</strong> ${data.bookingTools?.join(', ') || 'None'}</p>
         <p><strong>Booking Preference:</strong> ${data.bookingPreference}</p>
-        <hr>
-        <p><strong>Phone Setup:</strong> ${data.phoneSetup}</p>
+
+        <h3>📞 Phone & Voice Setup</h3>
+        <p><strong>Phone Setup Method:</strong> ${data.phoneSetup}</p>
         <p><strong>Voice Preference:</strong> ${data.voicePreference || 'No preference'}</p>
-        <p><strong>Special Notes:</strong> ${data.specialNotes || 'None'}</p>
+        ${data.specialNotes ? `<p><strong>Special Notes:</strong><br>${data.specialNotes}</p>` : ''}
+
+        <hr>
+        <p><strong>Next Steps:</strong></p>
+        <ol>
+          <li>Review the information above</li>
+          <li>Set up their AI receptionist based on their preferences</li>
+          <li>Provide them with a test phone number within 24 hours</li>
+          <li>Email them at <a href="mailto:${data.email}">${data.email}</a> when ready</li>
+        </ol>
       `,
     });
 
