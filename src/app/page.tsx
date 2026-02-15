@@ -3,6 +3,7 @@ import TrustBar from '@/components/sections/TrustBar';
 import ProblemStatement from '@/components/sections/ProblemStatement';
 import HowItWorks from '@/components/sections/HowItWorks';
 import Features from '@/components/sections/Features';
+import WhatIsSection from '@/components/sections/WhatIsSection';
 import LiveDemo from '@/components/sections/LiveDemo';
 import ROICalculator from '@/components/sections/ROICalculator';
 import IndustryGrid from '@/components/sections/IndustryGrid';
@@ -50,6 +51,7 @@ export default function Home() {
       <ProblemStatement />
       <HowItWorks />
       <Features />
+      <WhatIsSection />
       <LiveDemo />
       <ROICalculator />
       <IndustryGrid />
