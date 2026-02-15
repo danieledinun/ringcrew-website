@@ -6,7 +6,7 @@ import { Slider } from '@/components/ui/slider';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import SectionHeader from '@/components/shared/SectionHeader';
-import GetStartedButton from '@/components/shared/GetStartedButton';
+import Link from 'next/link';
 
 export default function ROICalculator() {
   const [callsPerWeek, setCallsPerWeek] = useState(50);
@@ -98,10 +98,15 @@ export default function ROICalculator() {
             </div>
 
             <div className="text-center pt-4">
-              <GetStartedButton />
-              <p className="mt-4 text-sm text-muted-foreground">
-                Stop Losing Revenue
-              </p>
+              <Link
+                href="/get-started"
+                className="inline-flex items-center justify-center rounded-brand bg-brand-500 text-white px-8 py-3 font-semibold hover:bg-brand-600 transition-colors shadow-cta"
+              >
+                {lostRevenue > 0
+                  ? `Stop Losing $${lostRevenue.toLocaleString()}/mo → Get Started Free`
+                  : 'Get Started Free →'
+                }
+              </Link>
             </div>
           </div>
         </Card>
