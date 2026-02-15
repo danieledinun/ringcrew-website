@@ -1,62 +1,67 @@
 import { Metadata } from 'next';
+import Link from 'next/link';
 import { Card } from '@/components/ui/card';
-import { generateMetadata } from '@/lib/seo';
+import { Clock } from 'lucide-react';
+import { getAllPosts } from '@/lib/blog';
 
-export const metadata: Metadata = generateMetadata({
-  title: 'Blog — AI Receptionist Tips & Industry Insights',
-  description: 'Learn about AI receptionists, customer service automation, and growing your local service business.',
-  path: '/blog',
-});
+export const metadata: Metadata = {
+  title: 'AI Receptionist Blog | Tips for Local Service Businesses | RingCrew',
+  description: 'Learn how AI receptionists help HVAC, plumbing, dental, and other local businesses capture more calls, book more appointments, and grow revenue.',
+  keywords: ['AI receptionist blog', 'business phone tips', 'missed calls', 'small business growth'],
+  alternates: {
+    canonical: 'https://ringcrew.ai/blog',
+  },
+};
 
-export default function BlogPage() {
+export default function BlogIndexPage() {
+  const posts = getAllPosts();
+
   return (
-    <div className="py-20 bg-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-12">
-          <h1 className="text-hero-sm font-heading text-foreground mb-4">
-            RingCrew Blog
+    <div className="py-20">
+      <div className="container mx-auto px-4 max-w-6xl">
+        <div className="text-center mb-16">
+          <h1 className="text-hero-sm md:text-hero font-heading text-foreground mb-6">
+            The RingCrew Blog
           </h1>
-          <p className="text-lg text-muted-foreground">
-            Tips, insights, and best practices for local service businesses
+          <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+            Insights on AI receptionists, missed calls, and growing your local service business.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {/* Placeholder blog posts */}
-          <Card className="p-6 hover:shadow-card-hover transition-shadow">
-            <div className="bg-surface-100 h-48 rounded-lg mb-4"></div>
-            <h3 className="text-xl font-semibold mb-2">
-              How Much Do Missed Calls Cost Your Business?
-            </h3>
-            <p className="text-muted-foreground text-sm">
-              Learn the true cost of missed customer calls and how AI can help capture every opportunity.
-            </p>
-          </Card>
+        <div className="grid md:grid-cols-2 gap-8">
+          {posts.map((post) => (
+            <Link key={post.slug} href={`/blog/${post.slug}`}>
+              <Card className="p-6 hover:shadow-card-hover transition-all h-full">
+                <div className="flex gap-2 mb-3">
+                  {post.industry.slice(0, 2).map((ind, i) => (
+                    <span
+                      key={i}
+                      className="text-xs bg-brand-500/10 text-brand-600 px-2 py-1 rounded-full"
+                    >
+                      {ind.toUpperCase()}
+                    </span>
+                  ))}
+                </div>
 
-          <Card className="p-6 hover:shadow-card-hover transition-shadow">
-            <div className="bg-surface-100 h-48 rounded-lg mb-4"></div>
-            <h3 className="text-xl font-semibold mb-2">
-              AI Receptionist vs Traditional Answering Service
-            </h3>
-            <p className="text-muted-foreground text-sm">
-              A comprehensive comparison of AI and human answering services in 2026.
-            </p>
-          </Card>
+                <h2 className="text-2xl font-heading font-bold text-foreground mb-3 hover:text-brand-600 transition-colors">
+                  {post.title}
+                </h2>
 
-          <Card className="p-6 hover:shadow-card-hover transition-shadow">
-            <div className="bg-surface-100 h-48 rounded-lg mb-4"></div>
-            <h3 className="text-xl font-semibold mb-2">
-              Why HVAC Companies Need an AI Receptionist
-            </h3>
-            <p className="text-muted-foreground text-sm">
-              Discover how HVAC companies are using AI to capture emergency calls and book more appointments.
-            </p>
-          </Card>
+                <p className="text-muted-foreground mb-4">
+                  {post.description}
+                </p>
+
+                <div className="flex items-center gap-4 text-sm text-muted-foreground">
+                  <span>{new Date(post.date).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}</span>
+                  <span className="flex items-center gap-1">
+                    <Clock className="h-4 w-4" />
+                    {post.readingTime} min read
+                  </span>
+                </div>
+              </Card>
+            </Link>
+          ))}
         </div>
-
-        <p className="text-center mt-12 text-muted-foreground">
-          Blog posts coming soon. Check back for industry insights and tips.
-        </p>
       </div>
     </div>
   );
