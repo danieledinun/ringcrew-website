@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { ArrowLeft, Check } from 'lucide-react';
 import { Card } from '@/components/ui/card';
@@ -16,6 +16,7 @@ import { Progress } from '@/components/ui/progress';
 const TOTAL_STEPS = 5;
 
 export default function GetStartedPage() {
+  const [mounted, setMounted] = useState(false);
   const [currentStep, setCurrentStep] = useState(1);
   const [submitted, setSubmitted] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -47,6 +48,10 @@ export default function GetStartedPage() {
   });
 
   const progress = (currentStep / TOTAL_STEPS) * 100;
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   const updateField = (field: string, value: any) => {
     setFormData(prev => ({ ...prev, [field]: value }));
@@ -92,6 +97,10 @@ export default function GetStartedPage() {
       setIsSubmitting(false);
     }
   };
+
+  if (!mounted) {
+    return null;
+  }
 
   if (submitted) {
     return (
