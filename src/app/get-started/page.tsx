@@ -18,6 +18,7 @@ const TOTAL_STEPS = 5;
 export default function GetStartedPage() {
   const [currentStep, setCurrentStep] = useState(1);
   const [submitted, setSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [formData, setFormData] = useState({
     // Step 1
     businessName: '',
@@ -64,15 +65,31 @@ export default function GetStartedPage() {
   };
 
   const handleSubmit = async () => {
-    // Submit form data
-    const response = await fetch('/api/onboarding', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(formData),
-    });
+    setIsSubmitting(true);
+    try {
+      console.log('Submitting form data:', formData);
 
-    if (response.ok) {
-      setSubmitted(true);
+      // Submit form data
+      const response = await fetch('/api/onboarding', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData),
+      });
+
+      console.log('Response status:', response.status);
+
+      if (response.ok) {
+        setSubmitted(true);
+      } else {
+        const error = await response.json();
+        console.error('Submission failed:', error);
+        alert('Something went wrong. Please try again or email us at hello@ringcrew.ai');
+      }
+    } catch (error) {
+      console.error('Error submitting form:', error);
+      alert('Network error. Please check your connection and try again.');
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
@@ -469,8 +486,8 @@ export default function GetStartedPage() {
                 Continue
               </Button>
             ) : (
-              <Button onClick={handleSubmit} className="bg-primary">
-                Submit & Start Trial
+              <Button onClick={handleSubmit} className="bg-primary" disabled={isSubmitting}>
+                {isSubmitting ? 'Submitting...' : 'Submit & Start Trial'}
               </Button>
             )}
           </div>
