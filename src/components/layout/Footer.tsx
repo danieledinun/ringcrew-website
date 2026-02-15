@@ -13,9 +13,9 @@ export default function Footer() {
               <Image
                 src="/logo-dark.svg"
                 alt="RingCrew"
-                width={160}
-                height={32}
-                className="h-8 w-auto"
+                width={240}
+                height={48}
+                className="h-10 w-auto"
               />
             </div>
             <p className="text-gray-400 text-sm">

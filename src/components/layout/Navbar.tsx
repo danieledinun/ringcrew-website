@@ -18,10 +18,10 @@ export default function Navbar() {
             <Image
               src="/logo-light.svg"
               alt="RingCrew"
-              width={160}
-              height={32}
+              width={240}
+              height={48}
               priority
-              className="h-8 w-auto"
+              className="h-10 w-auto"
             />
           </Link>
 
