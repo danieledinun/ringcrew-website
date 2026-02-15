@@ -11,7 +11,7 @@ const iconMap = {
 
 export default function HowItWorks() {
   return (
-    <section className="py-20 bg-surface-50">
+    <section id="how-it-works" className="py-20 bg-surface-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <SectionHeader
           title="Live in Under 24 Hours. No Calls. No Contracts."

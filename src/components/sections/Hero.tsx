@@ -1,7 +1,7 @@
 'use client';
 
 import { Button } from '@/components/ui/button';
-import { Play, Check } from 'lucide-react';
+import { Check } from 'lucide-react';
 import GetStartedButton from '@/components/shared/GetStartedButton';
 import { TRUST_BADGES } from '@/lib/constants';
 
@@ -35,10 +35,16 @@ export default function Hero() {
             {/* CTA Buttons */}
             <div className="flex flex-col sm:flex-row gap-4">
               <GetStartedButton />
-              <Button variant="outline" size="lg" className="group">
-                <Play className="mr-2 h-4 w-4" />
-                Listen to a Sample Call
-              </Button>
+              <a
+                href="#how-it-works"
+                className="inline-flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors font-medium text-lg"
+                onClick={(e) => {
+                  e.preventDefault();
+                  document.getElementById('how-it-works')?.scrollIntoView({ behavior: 'smooth' });
+                }}
+              >
+                See How It Works ↓
+              </a>
             </div>
           </div>
 
