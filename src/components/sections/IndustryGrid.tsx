@@ -4,13 +4,13 @@ import { ArrowRight } from 'lucide-react';
 import SectionHeader from '@/components/shared/SectionHeader';
 
 const industries = [
-  { icon: '🔧', name: 'HVAC', slug: 'hvac', tagline: 'Book 15+ more HVAC appointments per month' },
-  { icon: '🔧', name: 'Plumbing', slug: 'plumbing', tagline: 'Capture every emergency plumbing call' },
-  { icon: '🦷', name: 'Dental', slug: 'dental', tagline: 'Fill your dental schedule automatically' },
-  { icon: '💆', name: 'Med Spas', slug: 'med-spa', tagline: 'Book high-value consultations 24/7' },
-  { icon: '🚗', name: 'Auto Repair', slug: 'auto-repair', tagline: 'Never miss a repair call again' },
-  { icon: '🏠', name: 'Roofing', slug: 'roofing', tagline: 'Capture storm damage leads instantly' },
-  { icon: '🐜', name: 'Pest Control', slug: 'pest-control', tagline: 'Answer emergency pest calls instantly' },
+  { icon: '🔧', name: 'HVAC', slug: 'hvac', tagline: 'Book 15+ more HVAC appointments per month', seoDescription: 'AI receptionist for HVAC companies — answers every call 24/7' },
+  { icon: '🔧', name: 'Plumbing', slug: 'plumbing', tagline: 'Capture every emergency plumbing call', seoDescription: 'AI answering service for plumbers — capture emergency calls instantly' },
+  { icon: '🦷', name: 'Dental', slug: 'dental', tagline: 'Fill your dental schedule automatically', seoDescription: 'AI receptionist for dental offices — fill your schedule automatically' },
+  { icon: '💆', name: 'Med Spas', slug: 'med-spa', tagline: 'Book high-value consultations 24/7', seoDescription: 'AI receptionist for med spas — book consultations around the clock' },
+  { icon: '🚗', name: 'Auto Repair', slug: 'auto-repair', tagline: 'Never miss a repair call again', seoDescription: 'AI answering service for auto shops — never lose a repair job again' },
+  { icon: '🏠', name: 'Roofing', slug: 'roofing', tagline: 'Capture storm damage leads instantly', seoDescription: 'AI receptionist for roofing companies — capture storm damage leads 24/7' },
+  { icon: '🐜', name: 'Pest Control', slug: 'pest-control', tagline: 'Answer emergency pest calls instantly', seoDescription: 'AI answering service for pest control — handle urgent calls day and night' },
 ];
 
 export default function IndustryGrid() {
@@ -35,6 +35,9 @@ export default function IndustryGrid() {
                 </h3>
                 <p className="text-sm text-muted-foreground">
                   {industry.tagline}
+                </p>
+                <p className="text-sm text-muted-foreground mt-1">
+                  {industry.seoDescription}
                 </p>
               </Card>
             </Link>
