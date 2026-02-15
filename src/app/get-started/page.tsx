@@ -51,6 +51,15 @@ export default function GetStartedPage() {
 
   useEffect(() => {
     setMounted(true);
+
+    // Track form started conversion
+    if (typeof window !== 'undefined' && (window as any).gtag) {
+      (window as any).gtag('event', 'conversion', {
+        'send_to': 'AW-17954576067/bwEnCInh6fgbEMOttPFC',
+        'value': 10.0,
+        'currency': 'USD'
+      });
+    }
   }, []);
 
   const updateField = (field: string, value: any) => {
@@ -84,6 +93,14 @@ export default function GetStartedPage() {
       console.log('Response status:', response.status);
 
       if (response.ok) {
+        // Track form submission conversion
+        if (typeof window !== 'undefined' && (window as any).gtag) {
+          (window as any).gtag('event', 'conversion', {
+            'send_to': 'AW-17954576067/gWnjCIzh6fgbEMOttPFC',
+            'value': 297.0,
+            'currency': 'USD'
+          });
+        }
         setSubmitted(true);
       } else {
         const error = await response.json();

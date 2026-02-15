@@ -8,6 +8,7 @@ import { PRICING_PLANS } from '@/lib/constants';
 import SectionHeader from '@/components/shared/SectionHeader';
 import { generateMetadata } from '@/lib/seo';
 import { BreadcrumbJsonLd, FAQJsonLd } from '@/components/seo/JsonLd';
+import PricingPageTracker from '@/components/analytics/PricingPageTracker';
 
 export const metadata: Metadata = generateMetadata({
   title: 'Pricing — Simple, Transparent AI Receptionist Plans',
@@ -38,6 +39,7 @@ const pricingFAQ = [
 export default function PricingPage() {
   return (
     <>
+      <PricingPageTracker />
       <BreadcrumbJsonLd items={[
         { name: "Home", url: "https://ringcrew.ai" },
         { name: "Pricing", url: "https://ringcrew.ai/pricing" }
