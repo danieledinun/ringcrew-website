@@ -22,7 +22,7 @@ export default function FAQ() {
               <AccordionTrigger className="text-left">
                 {item.question}
               </AccordionTrigger>
-              <AccordionContent className="text-muted-foreground">
+              <AccordionContent forceMount className="text-muted-foreground data-[state=closed]:hidden">
                 {item.answer}
               </AccordionContent>
             </AccordionItem>
