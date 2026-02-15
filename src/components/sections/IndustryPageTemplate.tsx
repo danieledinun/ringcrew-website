@@ -176,6 +176,71 @@ export default function IndustryPageTemplate({ industry }: IndustryPageTemplateP
         </div>
       </section>
 
+      {/* Related Reading */}
+      <section className="py-16 bg-surface-50">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 className="text-3xl font-heading font-bold text-foreground mb-8 text-center">
+            Related Reading
+          </h2>
+          <div className="grid md:grid-cols-2 gap-6">
+            <Link href="/blog/missed-calls-cost" className="block">
+              <Card className="p-6 hover:shadow-card-hover transition-all h-full">
+                <h3 className="text-xl font-heading font-bold text-foreground mb-2">
+                  How Much Do Missed Calls Actually Cost Your Business?
+                </h3>
+                <p className="text-muted-foreground text-sm mb-3">
+                  Local businesses lose $120K+ per year to missed calls. See the real math behind unanswered phones.
+                </p>
+                <span className="text-brand-600 text-sm flex items-center gap-1">
+                  Read more <ArrowRight className="h-4 w-4" />
+                </span>
+              </Card>
+            </Link>
+            <Link href="/blog/after-hours-calls" className="block">
+              <Card className="p-6 hover:shadow-card-hover transition-all h-full">
+                <h3 className="text-xl font-heading font-bold text-foreground mb-2">
+                  43% of Service Calls Happen After Hours
+                </h3>
+                <p className="text-muted-foreground text-sm mb-3">
+                  Nearly half of service calls come after 5pm. If you're sending them to voicemail, you're losing thousands.
+                </p>
+                <span className="text-brand-600 text-sm flex items-center gap-1">
+                  Read more <ArrowRight className="h-4 w-4" />
+                </span>
+              </Card>
+            </Link>
+            {industry.slug === 'hvac' && (
+              <Link href="/blog/ai-receptionist-hvac" className="block">
+                <Card className="p-6 hover:shadow-card-hover transition-all h-full">
+                  <h3 className="text-xl font-heading font-bold text-foreground mb-2">
+                    Why Every HVAC Company Needs an AI Receptionist
+                  </h3>
+                  <p className="text-muted-foreground text-sm mb-3">
+                    HVAC companies miss 38% of calls. An AI receptionist answers 24/7 and books service calls instantly.
+                  </p>
+                  <span className="text-brand-600 text-sm flex items-center gap-1">
+                    Read more <ArrowRight className="h-4 w-4" />
+                  </span>
+                </Card>
+              </Link>
+            )}
+            <Link href="/blog/how-ai-receptionist-works" className="block">
+              <Card className="p-6 hover:shadow-card-hover transition-all h-full">
+                <h3 className="text-xl font-heading font-bold text-foreground mb-2">
+                  How Does an AI Receptionist Actually Work?
+                </h3>
+                <p className="text-muted-foreground text-sm mb-3">
+                  A plain English breakdown from the moment the phone rings to booking the appointment.
+                </p>
+                <span className="text-brand-600 text-sm flex items-center gap-1">
+                  Read more <ArrowRight className="h-4 w-4" />
+                </span>
+              </Card>
+            </Link>
+          </div>
+        </div>
+      </section>
+
       {/* Final CTA */}
       <section className="py-20 bg-brand-800 text-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">

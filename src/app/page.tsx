@@ -9,6 +9,7 @@ import ROICalculator from '@/components/sections/ROICalculator';
 import IndustryGrid from '@/components/sections/IndustryGrid';
 import ResultsPreview from '@/components/sections/Testimonials';
 import FAQ from '@/components/sections/FAQ';
+import BlogPreview from '@/components/sections/BlogPreview';
 import FinalCTA from '@/components/sections/FinalCTA';
 import { HomepageJsonLd, FAQJsonLd } from '@/components/seo/JsonLd';
 import Link from 'next/link';
@@ -103,6 +104,7 @@ export default function Home() {
       <IndustryGrid />
       <ResultsPreview />
       <FAQ items={faqItems} />
+      <BlogPreview />
       <FinalCTA />
     </>
   );
