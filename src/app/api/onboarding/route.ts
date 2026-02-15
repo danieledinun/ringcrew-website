@@ -10,8 +10,9 @@ export async function POST(request: Request) {
 
     // Email to business owner with form data
     await resend.emails.send({
-      from: 'RingCrew <noreply@ringcrew.ai>',
-      to: process.env.ADMIN_EMAIL || 'your-email@example.com', // Replace with actual email
+      from: 'RingCrew <onboarding@resend.dev>',
+      to: process.env.ADMIN_EMAIL || 'hello@ringcrew.ai',
+      replyTo: 'hello@ringcrew.ai',
       subject: `🚀 New Signup: ${data.businessName} (${data.industry})`,
       html: `
         <h2>New RingCrew Signup</h2>
@@ -39,8 +40,9 @@ export async function POST(request: Request) {
 
     // Confirmation email to prospect
     await resend.emails.send({
-      from: 'RingCrew <hello@ringcrew.ai>',
+      from: 'RingCrew <onboarding@resend.dev>',
       to: data.email,
+      replyTo: 'hello@ringcrew.ai',
       subject: "Welcome to RingCrew — We're Building Your AI Receptionist 🎉",
       html: `
         <h2>Hi ${data.contactName}!</h2>
