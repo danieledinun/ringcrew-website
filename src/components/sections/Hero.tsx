@@ -16,10 +16,18 @@ export default function Hero() {
               Never Miss Another Customer Call
             </h1>
 
-            <p className="text-xl text-muted-foreground mb-8 leading-relaxed">
+            <p className="text-xl text-muted-foreground mb-4 leading-relaxed">
               RingCrew is the AI receptionist that answers your business phone 24/7 —
               booking appointments, qualifying leads, and capturing revenue you&apos;re
               currently losing to voicemail. Set up in under 24 hours. No calls needed.
+            </p>
+
+            <p className="text-sm text-muted-foreground mb-8 max-w-2xl">
+              RingCrew is an AI-powered virtual receptionist service for local businesses
+              including HVAC companies, plumbers, dentists, med spas, auto repair shops,
+              roofing contractors, and pest control companies across the United States.
+              It uses voice AI to answer every inbound phone call in under one second,
+              24 hours a day, 7 days a week.
             </p>
 
             {/* Trust Badges */}
