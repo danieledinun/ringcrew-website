@@ -7,6 +7,7 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/
 import { PRICING_PLANS } from '@/lib/constants';
 import SectionHeader from '@/components/shared/SectionHeader';
 import { generateMetadata } from '@/lib/seo';
+import { BreadcrumbJsonLd, FAQJsonLd } from '@/components/seo/JsonLd';
 
 export const metadata: Metadata = generateMetadata({
   title: 'Pricing — Simple, Transparent AI Receptionist Plans',
@@ -37,6 +38,11 @@ const pricingFAQ = [
 export default function PricingPage() {
   return (
     <>
+      <BreadcrumbJsonLd items={[
+        { name: "Home", url: "https://ringcrew.ai" },
+        { name: "Pricing", url: "https://ringcrew.ai/pricing" }
+      ]} />
+      <FAQJsonLd faqs={pricingFAQ.map(f => ({ question: f.question, answer: f.answer }))} />
       {/* Hero Section */}
       <section className="py-20 bg-gradient-to-b from-surface-50 to-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
@@ -123,7 +129,7 @@ export default function PricingPage() {
                 <AccordionTrigger className="text-left">
                   {item.question}
                 </AccordionTrigger>
-                <AccordionContent className="text-muted-foreground">
+                <AccordionContent forceMount className="text-muted-foreground data-[state=closed]:hidden">
                   {item.answer}
                 </AccordionContent>
               </AccordionItem>
