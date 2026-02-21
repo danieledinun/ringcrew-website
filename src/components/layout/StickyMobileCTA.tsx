@@ -9,21 +9,26 @@ export function StickyMobileCTA() {
   const [mounted, setMounted] = useState(false);
   const pathname = usePathname();
 
-  // Hide on /get-started page
-  if (pathname === '/get-started') return null;
-
   useEffect(() => {
     setMounted(true);
+  }, []);
+
+  useEffect(() => {
+    if (!mounted) return;
 
     const handleScroll = () => {
       setShow(window.scrollY > 500);
     };
+
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+  }, [mounted]);
 
   // Don't render on server to avoid hydration mismatch
   if (!mounted) return null;
+
+  // Hide on /get-started page (check after mounted to avoid hydration issues)
+  if (pathname === '/get-started') return null;
 
   return (
     <div
