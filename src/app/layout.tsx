@@ -69,8 +69,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={`${heading.variable} ${body.variable} font-body antialiased`}>
+    <html lang="en" suppressHydrationWarning>
+      <body className={`${heading.variable} ${body.variable} font-body antialiased`} suppressHydrationWarning>
         <Script
           src="https://www.googletagmanager.com/gtag/js?id=AW-17954576067"
           strategy="afterInteractive"
