@@ -6,9 +6,12 @@ import { STATS } from '@/lib/constants';
 
 function AnimatedCounter({ value, label }: { value: string; label: string }) {
   const [isVisible, setIsVisible] = useState(false);
+  const [mounted, setMounted] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    setMounted(true);
+
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
@@ -28,6 +31,20 @@ function AnimatedCounter({ value, label }: { value: string; label: string }) {
       }
     };
   }, []);
+
+  // Prevent hydration mismatch by not applying transition until mounted
+  if (!mounted) {
+    return (
+      <div ref={ref}>
+        <div className="text-4xl md:text-5xl font-bold text-primary mb-2">
+          {value}
+        </div>
+        <p className="text-muted-foreground">
+          {label}
+        </p>
+      </div>
+    );
+  }
 
   return (
     <div ref={ref} className={`transition-opacity duration-1000 ${isVisible ? 'opacity-100' : 'opacity-0'}`}>
