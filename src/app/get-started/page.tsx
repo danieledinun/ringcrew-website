@@ -116,7 +116,11 @@ export default function GetStartedPage() {
   };
 
   if (!mounted) {
-    return null;
+    return (
+      <div className="min-h-screen bg-surface-50 flex items-center justify-center">
+        <div className="text-muted-foreground">Loading...</div>
+      </div>
+    );
   }
 
   if (submitted) {
@@ -161,7 +165,7 @@ export default function GetStartedPage() {
   }
 
   return (
-    <div className="min-h-screen bg-surface-50">
+    <div className="min-h-screen bg-surface-50" key={mounted ? 'mounted' : 'mounting'}>
       {/* Header */}
       <div className="bg-white border-b border-border sticky top-0 z-50">
         <div className="max-w-4xl mx-auto px-4 py-4 flex items-center justify-between">
